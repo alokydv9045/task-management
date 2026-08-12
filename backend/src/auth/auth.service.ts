@@ -14,9 +14,11 @@ export class AuthService {
 
   async guestLogin(): Promise<{ access_token: string; user: Partial<User> }> {
     try {
-      // Create a temporary guest user
+      // Generate a unique guest email to avoid MongoDB unique constraint on null
+      const guestId = `guest-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
       const user = await this.prisma.user.create({
         data: {
+          email: `${guestId}@guest.local`,
           isGuest: true,
         },
       });
