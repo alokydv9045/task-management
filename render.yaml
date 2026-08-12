@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: task-management-backend
+    env: node
+    plan: starter # Requires paid plan for persistent disks
+    rootDir: backend
+    buildCommand: npm install && npx prisma generate && npx prisma db push && npm run build
+    startCommand: npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PORT
+        value: 10000
+    disk:
+      name: sqlite-data
+      mountPath: /opt/render/project/src/backend/prisma
+      sizeGB: 1

@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "brainsync": {
+      "command": "node",
+      "args": [
+        "c:\\Users\\Acer\\.antigravity\\extensions\\dawoodahmad.brainsync-3.0.12-universal\\dist\\mcp-server.js"
+      ],
+      "type": "stdio",
+      "env": {
+        "BRAINSYNC_ENV_FILE": "C:\\Users\\Acer\\.bsync_core\\task-management-assessment\\mcp-secret-env.json"
+      }
+    }
+  }
+}
