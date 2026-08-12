@@ -8,6 +8,7 @@ async function bootstrap() {
     origin: [
       process.env.FRONTEND_URL || 'https://task-management-wine-one.vercel.app',
       'http://localhost:3000',
+      /\.vercel\.app$/,
     ],
     credentials: true,
   });
