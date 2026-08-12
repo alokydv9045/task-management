@@ -2,18 +2,18 @@ services:
   - type: web
     name: task-management-backend
     env: node
-    plan: starter # Requires paid plan for persistent disks
+    plan: free
     rootDir: backend
-    buildCommand: npm install && npx prisma generate && npx prisma db push && npm run build
+    buildCommand: npm install --include=dev && npx prisma generate && npm run build
     startCommand: npm run start:prod
     envVars:
       - key: NODE_ENV
         value: production
       - key: JWT_SECRET
-        generateValue: true
+        value: super-secret-key
       - key: PORT
         value: 10000
-    disk:
-      name: sqlite-data
-      mountPath: /opt/render/project/src/backend/prisma
-      sizeGB: 1
+      - key: DATABASE_URL
+        value: "mongodb://alokyadav83956_db_user:wTVCeikjrvhd8DVe@ac-iycxgnz-shard-00-00.clzsyma.mongodb.net:27017,ac-iycxgnz-shard-00-01.clzsyma.mongodb.net:27017,ac-iycxgnz-shard-00-02.clzsyma.mongodb.net:27017/task-management?ssl=true&replicaSet=atlas-voou14-shard-0&authSource=admin&retryWrites=true&w=majority"
+      - key: FRONTEND_URL
+        value: https://task-management-wine-one.vercel.app
